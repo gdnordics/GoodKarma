@@ -47,11 +47,14 @@ function createFacetFilter(locations) {
 }
 
 function createNumericFilters(durations, volunteers) {
+    let d = new Date()
+
     return [
         "durationMinutes>=" + durations.min,
         "durationMinutes<=" + durations.max,
         "volunteersNeeded>=" + volunteers.min,
-        "volunteersNeeded<=" + volunteers.max
+        "volunteersNeeded<=" + volunteers.max,
+        "eventDateTime>=" + d.getTime()
     ];
 }
 

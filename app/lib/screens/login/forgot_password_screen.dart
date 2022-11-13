@@ -1,9 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:good_karma_app/helpers/colors.dart';
 import 'package:good_karma_app/helpers/dimens.dart';
 import 'package:good_karma_app/helpers/style.dart';
 import 'package:good_karma_app/screens/login/login_screen.dart';
+import 'package:good_karma_app/screens/login/password_reset_confirm_sceen.dart';
 import 'package:good_karma_app/screens/register/register_screen.dart';
 import 'package:good_karma_app/utils/extension.dart';
 import 'package:good_karma_app/utils/slide_route.dart';
@@ -20,6 +22,9 @@ class ForgotPasswordScreen extends StatefulWidget {
 }
 
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+  final _resetPasswordFormKey = GlobalKey<FormState>();
+  late String _email;
+
   @override
   void initState() {
     super.initState();
@@ -30,8 +35,31 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     super.dispose();
   }
 
+  onValidateEmail(input) {
+    if (!(input!.contains('@'))) {
+      return "Invalid email";
+    }
+    return null;
+  }
+
+  onSaveEmail(input) {
+    _email = input;
+  }
+
   onBackwards() {
     Navigator.pop(context);
+  }
+
+  onResetPassword() async {
+    if(_resetPasswordFormKey.currentState!.validate()) {
+      _resetPasswordFormKey.currentState!.save();
+
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: _email);
+
+      Navigator.pushReplacement(context, SlideRightRoute(
+        page: const PasswordResetConfirmScreen()
+      ));
+    }
   }
 
   @override
@@ -43,7 +71,9 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           body: SingleChildScrollView(
             physics: const ClampingScrollPhysics(),
             scrollDirection: Axis.vertical,
-            child: Column(
+            child: Form(
+              key: _resetPasswordFormKey,
+              child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
@@ -59,10 +89,12 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 const SizedBox(height: kSpacingLarge),
                 Text("Email", style: mediumTextStyle)
                     .addMarginLeft(kSpacingControl),
-                const TextFormWidget(
+                TextFormWidget(
                   hintText: "abc@email.com",
-                  icon:
-                      Icon(Icons.email_outlined, color: kEditTextPrimaryColor),
+                  maxLines: 1,
+                  icon:Icon(Icons.email_outlined, color: kEditTextPrimaryColor),
+                  onValidation: onValidateEmail,
+                  onSaved: onSaveEmail,
                 ),
                 const SizedBox(height: kSpacingContainer),
                 Center(
@@ -70,9 +102,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                         width: 252,
                         height: 58,
                         text: "SEND EMAIL LINK",
-                        onPressed: () {
-                          debugPrint("Pressed SEND EMAIL LINK");
-                        })),
+                        onPressed: onResetPassword)),
                 InkWell(
                   child: Center(
                     child: RichText(
@@ -101,6 +131,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               ],
             ).wrapPaddingAll(kSpacingContainer),
           )),
-    );
+    ));
   }
 }

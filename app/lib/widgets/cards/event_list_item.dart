@@ -33,6 +33,17 @@ class EventListItem extends StatelessWidget {
     );
   }
 
+  Widget buildBannerImage(BuildContext context, String? imageUrl) {
+    if (imageUrl == null) {
+      return SizedBox(width: MediaQuery.of(context).size.width);
+    }
+    return Image.network(imageUrl,
+                    errorBuilder: (context, url, error) =>
+                        const Icon(Icons.error),
+                    fit: BoxFit.cover,
+                    width: MediaQuery.of(context).size.width);
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -62,11 +73,7 @@ class EventListItem extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(18.0)),
               child: SizedBox.fromSize(
                 size: Size(89.0, 64.0),
-                child: Image.network(event.imageUrl!,
-                    errorBuilder: (context, url, error) =>
-                        const Icon(Icons.error),
-                    fit: BoxFit.cover,
-                    width: MediaQuery.of(context).size.width),
+                child: buildBannerImage(context, event.imageUrl),
               ),
             ),
           ),

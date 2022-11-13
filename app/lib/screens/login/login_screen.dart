@@ -22,7 +22,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final _loginFormKey = GlobalKey<FormState>();
   final AuthService authservice = AuthService();
 
   @override
@@ -95,9 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
             child: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.vertical,
-              child: Form(
-                key: _loginFormKey,
-                child: Column(
+              child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 40.0),
@@ -146,7 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ).wrapPaddingAll(kSpacingContainer),
               ),
             ),
-          )),
+          ),
     );
   }
 }

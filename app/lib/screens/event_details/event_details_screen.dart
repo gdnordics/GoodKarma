@@ -212,6 +212,22 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
 
   }
 
+  Widget buildBannerImage(String? imageUrl) {
+    if (imageUrl == null) {
+      return SizedBox(
+        width: MediaQuery.of(context).size.width,
+        height: 148);
+    }
+    return Image.network(
+                      imageUrl,
+                      errorBuilder: (context, url, error) =>
+                          const Icon(Icons.error),
+                      fit: BoxFit.fitWidth,
+                      width: MediaQuery.of(context).size.width,
+                      height: 148.0,
+                    );
+  }
+
   Widget buildEventDetails(EventDetails event) {
     debugPrint("Event: ${event.title}, public: ${event.public}");
     bool questionsExist = hasQuestions ?? event.hasQuestions;
@@ -234,14 +250,7 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.network(
-                      event.imageUrl!,
-                      errorBuilder: (context, url, error) =>
-                          const Icon(Icons.error),
-                      fit: BoxFit.fitWidth,
-                      width: MediaQuery.of(context).size.width,
-                      height: 148.0,
-                    ),
+                    buildBannerImage(event.imageUrl),
                     Container(
                         padding: const EdgeInsets.only(
                             left: 18.0, top: 20.0, right: 10.0),

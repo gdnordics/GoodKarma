@@ -29,11 +29,6 @@ class MyEventsOrganizing extends StatelessWidget {
         alignment: Alignment.center,
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           Container(
-              alignment: Alignment.center,
-              width: 150.0,
-              child: Image.asset("assets/social-network.png", fit: BoxFit.cover)),
-          SizedBox(height: 20.0),
-          Container(
             alignment: Alignment.center,
             width: 250.0,
             child: Text(
