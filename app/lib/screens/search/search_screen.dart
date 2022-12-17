@@ -118,7 +118,7 @@ class _SearchScreenState extends State<SearchScreen> {
             backgroundColor: backgroundColor,
             body: Column(children: [
               Container(
-                padding: const EdgeInsets.only(top: 20.0, right: 20.0),
+                padding: const EdgeInsets.only(top: 20.0, right: 15.0),
                 alignment: Alignment.centerRight,
                 child: InkWell(
                     borderRadius: BorderRadius.circular(20.0),
@@ -139,12 +139,12 @@ class _SearchScreenState extends State<SearchScreen> {
               SizedBox(height: 30.0),
               Row(mainAxisAlignment: MainAxisAlignment.start, children: [
                 SizedBox(width: 20.0),
-                Container(
+                Expanded(child: Container(
                   decoration: BoxDecoration(
                     border: Border.all(color: kEditTextBorderColor),
                     borderRadius: BorderRadius.circular(8.0),
                   ),
-                  width: 300,
+                  
                   child: Theme(
                    child: TextField(
                     maxLines: 1,
@@ -168,7 +168,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     onSubmitted: onQueryChange,
                   ),
                   data: Theme.of(context).copyWith(primaryColor: primaryColor))
-                ),
+                )),
                 SizedBox(width: 10.0),
                 Ink(
                     decoration: BoxDecoration(
@@ -179,7 +179,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       color: backgroundColor,
                       onPressed: onShowFilter,
                     )),
-                SizedBox(width: 10.0),
+                SizedBox(width: 25.0),
               ]),
               SizedBox(height: 10.0),
               Expanded(

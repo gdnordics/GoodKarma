@@ -105,6 +105,21 @@ class _LoginScreenState extends State<LoginScreen> {
                           "assets/logos/logo_text.png",
                           fit: BoxFit.cover,
                         )),
+                    const SizedBox(height: 10.0),
+                    Center(child:
+                      Text("by", 
+                      style: normalKarmaTextStyle.copyWith(
+                        fontSize: 14.0,
+                        color: subtitleColor
+                      ))),
+                    const SizedBox(height: 10.0),
+                    Container(
+                      alignment: Alignment.center,
+                      height: 18,
+                      child: Image.asset(
+                        "assets/logos/gdg.png",
+                        fit: BoxFit.fitHeight
+                      )),
                     const SizedBox(height: 60.0),
                     SignInForm(
                         onSignIn: onSignIn, onForgotPassword: onForgotPassword),
