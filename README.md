@@ -33,11 +33,9 @@ This project is licensed under the MIT License. See the LICENSE file for more de
 Feel free to reach out to us with any questions or feedback at gdnordics@gmail.com
 
 ### Acknowledgements
-- Scott Adams for the Inspirational quote.
-- Google Developers Nordics for the Project idea.
-- Let's make the world a better place together!
+- Google Developers Nordics for supporting the Project idea.
+- Founding Team : Erik Ljung, Prajit Datta, Frank Bendik, Shubhangi Das Barman
 
-Happy Volunteering!
 
 ### Help and Support
 If you need help or support, please reach out to us at gdnordics@gmail.com
