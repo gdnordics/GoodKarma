@@ -30,7 +30,7 @@ We welcome contributions to GoodKarma! Please read the CONTRIBUTING.md file for 
 This project is licensed under the MIT License. See the LICENSE file for more details.
 
 ## Contact
-Feel free to reach out to us with any questions or feedback at [YOUR_EMAIL_ADDRESS].
+Feel free to reach out to us with any questions or feedback
 
 ### Acknowledgements
 - Scott Adams for the Inspirational quote.
@@ -40,4 +40,4 @@ Feel free to reach out to us with any questions or feedback at [YOUR_EMAIL_ADDRE
 Happy Volunteering!
 
 ### Help and Support
-If you need help or support, please reach out to us at [YOUR_EMAIL_ADDRESS].
+If you need help or support, please reach out to us through the github issues.
