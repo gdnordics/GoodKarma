@@ -1,13 +1,14 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:good_karma_app/helpers/colors.dart';
 import 'package:good_karma_app/helpers/style.dart';
 import 'package:good_karma_app/models/app_user.dart';
 import 'package:good_karma_app/models/user_data.dart';
 import 'package:good_karma_app/screens/home/widgets/profile_avatar.dart';
-import 'package:good_karma_app/screens/home/widgets/profile_description.dart';
-import 'package:good_karma_app/screens/home/widgets/profile_event_score.dart';
 import 'package:good_karma_app/services/database_service.dart';
+import 'package:good_karma_app/widgets/buttons/action_button.dart';
 import 'package:provider/provider.dart';
+import 'package:good_karma_app/widgets/eula_dialog.dart';
 
 class ProfilePage extends StatefulWidget {
   final VoidCallback onLogout;
@@ -41,6 +42,14 @@ class _ProfilePageState extends State<ProfilePage> {
     debugPrint("Edit Profile pressed!");
   }
 
+  onShowUserAgreement() {
+    showDialog(
+      context: context, 
+      builder: (BuildContext ctx) {
+        return EULADialog(onClose: () {});
+      });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -49,6 +58,16 @@ class _ProfilePageState extends State<ProfilePage> {
           child: Container(
               alignment: Alignment.centerLeft,
               padding: const EdgeInsets.only(left: 20.0),
+              decoration: const BoxDecoration(
+              color: panelColor,
+              boxShadow: [
+                BoxShadow(
+                  color: Color(0x339E9E9E),
+                  blurRadius: 5,
+                  spreadRadius: 4
+                )
+              ]
+            ),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -82,24 +101,43 @@ class _ProfilePageState extends State<ProfilePage> {
                   physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.vertical,
                   child: Container(
-                      padding: const EdgeInsets.only(top: 0.0),
+                      padding: const EdgeInsets.only(top: 20.0),
                       child: Column(children: [
                         ProfileAvatar(
                           imagePath: user.profileImageUrl, 
                           name: user.name ?? ""),
-                        SizedBox(height: 20.0),
-                        //ProfileEventScore(eventsVolunteered: 200, eventsOrganized: 344, karmaPoints: 50),
-                        //SizedBox(height: 30.0),
-                        //ProfileDescription(description: 
-                        //  user.bio?.isEmpty ?? true ? 
-                        //  "" : 
-                        //  user.bio.toString() ),
-                        SizedBox(height: 50.0),
-                        //ProfileEditButton(onEditProfile: onEditProfile, text: "Edit Profile"),
-                        SizedBox(height: 10.0),
+                        const SizedBox(height: 40.0),
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                          alignment: Alignment.center,
+                          child: Column(children: [
+                            Text(
+                            "Empowering communities through connecting volunteers and fostering kindness, one act of service at a time.", 
+                            textAlign: TextAlign.center,
+                          style: normalPromptTextStyle.copyWith(
+                            fontSize: 20.0,
+                            color: const Color(0xFF366740)
+                          )),
+                          SizedBox(height: 5.0),
+                          Text(
+                            "#GoodKarma", 
+                            textAlign: TextAlign.center,
+                          style: normalPromptTextStyle.copyWith(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                          ))
+                          
+                          ])
+                        ),
+                        const SizedBox(height: 50.0),
+                        ActionButton(
+                          text: "End-User License Agreement", 
+                          onPressed: onShowUserAgreement,
+                          width: 250,
+                          height: 52),
                       ]))));
                 } else {
-                  return Text("loading...");
+                  return const SizedBox(height: 50.0);
                 }
               })
       )

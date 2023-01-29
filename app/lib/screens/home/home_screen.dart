@@ -121,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
         return Scaffold(
           key: _scaffoldKey,
-          backgroundColor: backgroundColor,
+          backgroundColor: mainLoadingScreenColor,
           body: IndexedStack(
             index: currentIndex,
             children: [
@@ -130,15 +130,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               MyEventsPage(
                   onGoBack: onGoBack, onSearchPressed: onSearchPressed),
               ProfilePage(onLogout: onLogout),
-              const InfoPage(),
             ],
           ),
           bottomNavigationBar: BottomAppBar(
-              child: KarmaBottomNavBar(
+          child: KarmaBottomNavBar(
             selected: selectedTab,
             onExplorePressed: onExplorePressed,
             onMyEventsPressed: onMyEventsPressed,
-            onInfoPressed: onInfoPressed,
             onAddEventPressed: onAddEventPressed,
             onProfilePressed: onProfilePressed,
           )),

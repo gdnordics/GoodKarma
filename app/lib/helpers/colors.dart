@@ -23,7 +23,12 @@ const formGreyColor = Color(0xFF747688);
 const volunteerApplicationFormApplyBtnColor = Color(0xFF00B6AA);
 const signedupEventCancelBtnColor = Color(0xFFCF3333);
 
-const backgroundColor = Color.fromARGB(255, 255, 255, 255);
+//const backgroundColor = Color.fromARGB(255, 255, 255, 255);
+const backgroundColor = Color(0xFFFFFAEA);
+const panelColor = Color.fromARGB(255, 255, 255, 255);
+
+const mainLoadingScreenColor = Color(0xFFFFFAEA);
+
 const toastTextColor = Color.fromARGB(255, 241, 241, 241);
 
 
@@ -37,6 +42,8 @@ const shadowBorderColor = Color(0xFFDDDDDD);
 const primaryTextColor = Color.fromARGB(255, 95, 95, 95);
 
 const secondaryTextColor = Color.fromARGB(255, 209, 209, 209);
+
+const answerTextColor = Color(0xFF11B233);
 //in form placeholder font color
 const kEditTextHintColor = Color(0xFF747688);
 //primary text color inside buttons
@@ -73,6 +80,8 @@ const primaryColor = primaryLightGreenColor;
 const primayBackdropColor = Color(0x3311B233);
 
 const forwardActionIconBGColor = Color(0x77366740);
+
+const mainLoadingScreenTextColor = Color(0xFF11B233);
 
 Map<int, Color> color =
 {

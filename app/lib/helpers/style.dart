@@ -11,20 +11,31 @@ final normalKarmaTextStyle = KarmaFonts.paniPuri(
     color: primaryLightGreenColor,
 );
 
+final mainLoadingScreenTextStyle = GoogleFonts.quicksand(
+  color: mainLoadingScreenTextColor,
+  fontSize: 24.0,
+  fontWeight: FontWeight.bold
+);
 
-final normalTextStyle = GoogleFonts.roboto(
+final normalTextStyle = GoogleFonts.quicksand(
     color: primaryTextColor,
     fontSize: kTextSizeMedium,
     fontWeight: FontWeight.w400
 );
 
-final mediumTextStyle = GoogleFonts.roboto(
+final normalPromptTextStyle = GoogleFonts.quicksand(
+     fontSize: 24.0,
+    fontWeight: FontWeight.w500,
+    color: mainLoadingScreenTextColor
+);
+
+final mediumTextStyle = GoogleFonts.quicksand(
     color: primaryTextColor,
     fontSize: kTextSizeMedium,
     fontWeight: FontWeight.w500
 );
 
-final boldTextStyle = GoogleFonts.roboto(
+final boldTextStyle = GoogleFonts.quicksand(
     color: primaryTextColor,
     fontSize: kTextSizeMedium,
     fontWeight: FontWeight.w700,

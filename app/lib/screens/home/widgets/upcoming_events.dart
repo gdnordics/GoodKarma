@@ -26,9 +26,7 @@ class UpcomingEvents extends StatelessWidget {
             width: 300.0,
             child: Text(
             "Be the first to create a event",
-            style: normalKarmaTextStyle.copyWith(
-              fontSize: 24.0
-            ),
+            style: normalPromptTextStyle,
             textAlign: TextAlign.center,
           ))
         ]));

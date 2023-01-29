@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:good_karma_app/models/location_list.dart';
 import 'package:intl/intl.dart';
 import 'package:good_karma_app/helpers/colors.dart';
 import 'package:good_karma_app/helpers/style.dart';
@@ -23,11 +24,9 @@ class EventListItem extends StatelessWidget {
                 boldTextStyle.copyWith(color: primaryLightGreenColor, fontSize: 13.0)),
         Text(event.title!,
             style: boldTextStyle.copyWith(color: primaryDarkGreenColor, fontSize: 15.0)),
-        Container(
-          padding: const EdgeInsets.only(left: 10.0),
-          child: Text(event.creatorName ?? "-",
+        Text(event.creatorName ?? "-",
               style:
-                  boldTextStyle.copyWith(color: primaryLightGreenColor, fontSize: 12.0)),
+                  boldTextStyle.copyWith(color: primaryLightGreenColor, fontSize: 12.0),
         )
       ],
     );
@@ -92,7 +91,7 @@ class EventListItem extends StatelessWidget {
                             size: 14.0,
                           ),
                           SizedBox(width: 5.0),
-                          Text(event.location!,
+                          Text(city_locations[event.location!] ?? "",
                               style: boldTextStyle.copyWith(
                                   color: Color(0xFF747688), fontSize: 13.0))
                         ])

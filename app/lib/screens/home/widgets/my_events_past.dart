@@ -29,9 +29,7 @@ class MyEventsPast extends StatelessWidget {
             width: 250.0,
             child: Text(
             "Looks like you haven't attended anything yet",
-            style: normalKarmaTextStyle.copyWith(
-              fontSize: 24.0
-            ),
+            style: normalPromptTextStyle,
             textAlign: TextAlign.center,
           ))
         ]));

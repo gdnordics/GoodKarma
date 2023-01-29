@@ -18,7 +18,7 @@ class SearchAppBar extends StatelessWidget {
         alignment: Alignment.center,
         padding: const EdgeInsets.only(left: 15.0, right: 15.0),
         decoration: BoxDecoration(
-          color: backgroundColor,
+          color: panelColor,
           boxShadow: const [
             BoxShadow(
               color: Color(0x339E9E9E),

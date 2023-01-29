@@ -1,7 +1,6 @@
 class Location {
-  String? id;
+  String id;
   String name;
-  bool? isSelect = false;
 
-  Location(this.id, this.name, this.isSelect);
+  Location(this.id, this.name);
 }

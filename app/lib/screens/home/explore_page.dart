@@ -60,7 +60,7 @@ class _ExplorePageState extends State<ExplorePage> {
       ),
       Expanded(
           child: Container(
-              padding: const EdgeInsets.only(left: 15.0, right: 15.0),
+              margin: const EdgeInsets.only(left: 15.0, right: 15.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [

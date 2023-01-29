@@ -3,6 +3,7 @@ import 'package:good_karma_app/helpers/colors.dart';
 import 'package:good_karma_app/helpers/style.dart';
 import 'package:good_karma_app/models/event.dart';
 import 'package:good_karma_app/models/filter_model.dart';
+import 'package:good_karma_app/models/location_list.dart';
 import 'package:good_karma_app/screens/event_details/event_details_screen.dart';
 import 'package:good_karma_app/screens/search/widgets/search_filter_modal.dart';
 import 'package:good_karma_app/services/search_service.dart';
@@ -29,12 +30,7 @@ class _SearchScreenState extends State<SearchScreen> {
   final FilterLimitsModel filterLimits = FilterLimitsModel(
       durationLimits: SliderLimitModel(maxValue: 24, minValue: 0, slices: 24),
       volunteerLimits: SliderLimitModel(maxValue: 100, minValue: 1, slices: 99),
-      locations: [
-        LocationModel(label: "Stockholm", value: "stockholm"),
-        LocationModel(label: "Gothenburg", value: "gothenburg"),
-        LocationModel(label: "Århus", value: "arhus"),
-        LocationModel(label: "Copenhagen", value: "copenhagen"),
-      ]);
+      locations: locationsList);
 
   late FilterModel filter;
   late String? query;
@@ -133,7 +129,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   alignment: Alignment.centerLeft,
                   child: Text("Search for events",
-                      style: normalKarmaTextStyle.copyWith(
+                      style: normalPromptTextStyle.copyWith(
                           fontSize: 32.0, 
                           color: primaryColor))),
               SizedBox(height: 30.0),

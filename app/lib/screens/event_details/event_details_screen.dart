@@ -4,6 +4,7 @@ import 'package:good_karma_app/helpers/colors.dart';
 import 'package:good_karma_app/helpers/style.dart';
 import 'package:good_karma_app/models/event.dart';
 import 'package:good_karma_app/models/event_questions.dart';
+import 'package:good_karma_app/models/location_list.dart';
 import 'package:good_karma_app/models/request_to_attend.dart';
 import 'package:good_karma_app/models/user_data.dart';
 import 'package:good_karma_app/screens/event/edit_event_screen.dart';
@@ -270,7 +271,7 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                 child: Text(event.description!, style: normalTextStyle)),
             SizedBox(height: 20.0),
             EventDetailsList(
-              location: event.location!,
+              location: city_locations[event.location!] ?? "",
               eventDuration: event.eventDuration,
               creatorName: event.creatorName,
               volunteersNeeded: event.volunteersNeeded,

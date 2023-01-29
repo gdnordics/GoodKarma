@@ -90,19 +90,6 @@ class EventDetailsList extends StatelessWidget {
               : null,
           trailing: volunteerAction,
         ),
-        ListTile(
-          leading: Container(
-              height: 48.0,
-              width: 48.0,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                  color: primayBackdropColor,
-                  borderRadius: BorderRadius.all(Radius.circular(15.0))),
-              child: const Icon(Icons.attach_money_rounded,
-                  color: primaryLightGreenColor, size: 34)),
-          title:
-              Text('$karmaPoints  Karma Points reward', style: boldTextStyle),
-        ),
       ],
     );
   }

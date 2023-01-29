@@ -33,9 +33,7 @@ class MyEventsOrganizing extends StatelessWidget {
             width: 250.0,
             child: Text(
             "Organize your next event",
-            style: normalKarmaTextStyle.copyWith(
-              fontSize: 24.0
-            ),
+            style: normalPromptTextStyle,
             textAlign: TextAlign.center,
           ))
         ]));

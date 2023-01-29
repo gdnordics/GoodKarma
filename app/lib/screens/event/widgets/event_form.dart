@@ -6,7 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:good_karma_app/helpers/colors.dart';
 import 'package:good_karma_app/helpers/style.dart';
-import 'package:good_karma_app/models/dummy_data.dart';
+import 'package:good_karma_app/models/location_list.dart';
 import 'package:good_karma_app/models/event.dart';
 import 'package:good_karma_app/models/image_model.dart';
 import 'package:good_karma_app/models/user_data.dart';
@@ -59,7 +59,12 @@ class _EventFormState extends State<EventForm> {
 
     _locationsDropdownMenu =
         _buildLocationsModelDropdown(locationsList);
-    _locationsModel = locationsList[0];
+    // if (widget.originalEvent?.location != null) {
+    //   String location = widget.originalEvent!.location!;
+    //   _locationsModel = Location(location, city_locations[location]!);
+    // } else {
+      _locationsModel = locationsList[0];
+    //}
     startTimeController.text = formatDate(widget.originalEvent?.eventDateTime);
     endTimeController.text = formatDate(widget.originalEvent?.endDateTime);
     startDateTime = widget.originalEvent?.eventDateTime;
@@ -72,7 +77,7 @@ class _EventFormState extends State<EventForm> {
   }
 
   Location _locationsModel =
-      Location(null, 'Select Location', true);
+      Location("", 'Select Location');
   late List<DropdownMenuItem<Location>>
       _locationsDropdownMenu;
 

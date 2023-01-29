@@ -34,9 +34,9 @@ class _ConfirmRejectDialogState extends State<ConfirmRejectDialog> {
   Widget build(BuildContext context) {
     return AlertDialog(
       insetPadding: const EdgeInsets.all(10.0),
-      title: Text("Reject ${widget.volunteerName}"),
+      title: Text("Reject ${widget.volunteerName}", style: boldTextStyle),
       content: Container(
-        height: 130.0,
+        height: 150.0,
         width: 200.0,
         child: Form(
         key: _formKey,
@@ -65,14 +65,14 @@ class _ConfirmRejectDialogState extends State<ConfirmRejectDialog> {
               widget.onConfirm(message);
             }
           },
-          child: const Text("Confirm")
+          child: Text("Confirm", style: normalTextStyle)
         ),
         TextButton(
           onPressed: () {
             widget.onCancel();
             Navigator.of(context).pop();
           },
-          child: const Text("Cancel")
+          child: Text("Cancel", style: normalTextStyle)
         )
       ],
     );

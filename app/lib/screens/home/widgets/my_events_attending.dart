@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:good_karma_app/helpers/colors.dart';
 import 'package:good_karma_app/helpers/style.dart';
 import 'package:good_karma_app/models/event.dart';
 import 'package:good_karma_app/models/user_data.dart';
 import 'package:good_karma_app/widgets/event_list.dart';
 import 'package:good_karma_app/widgets/events_loading.dart';
 import 'package:good_karma_app/services/database_service.dart';
-import 'package:good_karma_app/widgets/cards/event_list_item.dart';
-import 'package:good_karma_app/widgets/events_loading.dart';
 import 'package:provider/provider.dart';
 
 class MyEventsAttending extends StatelessWidget {
@@ -31,9 +30,7 @@ class MyEventsAttending extends StatelessWidget {
             width: 250.0,
             child: Text(
             "Find new events you can attend",
-            style: normalKarmaTextStyle.copyWith(
-              fontSize: 24.0
-            ),
+            style: normalPromptTextStyle,
             textAlign: TextAlign.center,
           ))
         ]));

@@ -136,8 +136,9 @@ class _VolunteerDetailsState extends State<VolunteerDetails> {
               child: Text("${question.answer}",
                   style: normalTextStyle.copyWith(
                       fontStyle: FontStyle.italic,
+                      fontWeight: FontWeight.bold,
                       fontSize: 14.0,
-                      color: secondaryTextColor)))
+                      color: answerTextColor)))
         ]));
   }
 

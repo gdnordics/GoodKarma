@@ -6,7 +6,6 @@ class KarmaBottomNavBar extends StatelessWidget {
   final String selected;
   final VoidCallback onExplorePressed;
   final VoidCallback onMyEventsPressed;
-  final VoidCallback onInfoPressed;
   final VoidCallback onProfilePressed;
   final VoidCallback onAddEventPressed;
 
@@ -15,7 +14,6 @@ class KarmaBottomNavBar extends StatelessWidget {
       required this.selected,
       required this.onExplorePressed,
       required this.onMyEventsPressed,
-      required this.onInfoPressed,
       required this.onProfilePressed,
       required this.onAddEventPressed})
       : super(key: key);
@@ -78,12 +76,10 @@ class KarmaBottomNavBar extends StatelessWidget {
               Icons.explore, "Explore"),
           buildMenuButton(selected == "myevents", onMyEventsPressed,
               Icons.calendar_month_rounded, "My Events"),
-          buildKarmaButton(
-              onAddEventPressed, Icons.add_circle_rounded, "KARMA"),
           buildMenuButton(selected == "profile", onProfilePressed,
               Icons.person_rounded, "Profile"),
-          buildMenuButton(
-              selected == "info", onInfoPressed, Icons.info, "Info"),
+          buildKarmaButton(
+              onAddEventPressed, Icons.add_circle_rounded, "KARMA"),
         ]));
   }
 }

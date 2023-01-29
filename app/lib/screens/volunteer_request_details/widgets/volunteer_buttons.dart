@@ -20,12 +20,11 @@ class VolunteerButtons extends StatelessWidget {
     required this.onUndo
   }): super(key:key);
 
-  @override
-  Widget build(BuildContext context) {
+  Widget _buildButtons(BuildContext context) {
     if (requestStatus == RequestToAttend.requestPendingResponse) {
       return Container(
         height: 110.0,
-        color: Colors.white,
+        color: panelColor,
         alignment: Alignment.bottomCenter,
         padding: const EdgeInsets.symmetric(vertical: 20.0),
         child: Row(
@@ -39,17 +38,17 @@ class VolunteerButtons extends StatelessWidget {
 
     if (requestStatus == RequestToAttend.requestAccepted) {
       return Container(
-        height: 150.0,
-        color: Colors.white,
+        height: 110.0,
+        color: panelColor,
         alignment: Alignment.bottomCenter,
-        padding: const EdgeInsets.symmetric(vertical: 20.0),
+        padding: const EdgeInsets.symmetric(vertical: 10.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
           Text(
             "Accepted to volunteer",
             style: normalTextStyle.copyWith(
-              fontSize: 24.0,
+              fontSize: 20.0,
               color: approvedEventColor
             ),),
           SizedBox(width: 10),
@@ -59,17 +58,17 @@ class VolunteerButtons extends StatelessWidget {
 
     if (requestStatus == RequestToAttend.requestDenied) {
       return Container(
-        height: 150.0,
-        color: Colors.white,
+        height: 110.0,
+        color: panelColor,
         alignment: Alignment.bottomCenter,
-        padding: const EdgeInsets.symmetric(vertical: 20.0),
+        padding: const EdgeInsets.symmetric(vertical: 10.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
           Text(
             "Reject to volunteer",
             style: normalTextStyle.copyWith(
-              fontSize: 24.0,
+              fontSize: 20.0,
               color: cancelRequestToAttendColor
             ),
           ),
@@ -80,9 +79,15 @@ class VolunteerButtons extends StatelessWidget {
 
     return Container(
         height: 110.0,
-        color: Colors.white,
+        color: panelColor,
         alignment: Alignment.bottomCenter,
         padding: const EdgeInsets.symmetric(vertical: 20.0),
         child: Text("Request Cancelled"));
   }
+
+  @override
+  Widget build(BuildContext context) {
+    return BottomAppBar(child: _buildButtons(context));
+  }
+    
 }

@@ -1,6 +1,8 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:good_karma_app/helpers/colors.dart';
 import 'package:good_karma_app/helpers/style.dart';
+import 'package:good_karma_app/models/event_locations.dart';
 import 'package:good_karma_app/models/filter_model.dart';
 import 'package:good_karma_app/screens/search/widgets/multi_select_fields.dart';
 import 'package:good_karma_app/screens/search/widgets/toggle_field_item.dart';
@@ -17,19 +19,10 @@ class SliderLimitModel{
   });
 }
 
-class LocationModel{
-  final String label;
-  final String value;
-  const LocationModel({
-    required this.label,
-    required this.value
-  });
-}
-
 class FilterLimitsModel{
   final SliderLimitModel durationLimits;
   final SliderLimitModel volunteerLimits;
-  final List<LocationModel> locations;
+  final List<Location> locations;
   const FilterLimitsModel({
     required this.durationLimits,
     required this.volunteerLimits,
@@ -109,13 +102,23 @@ class _SearchFilterModalState extends State<SearchFilterModal> {
   }
 
   Widget buildLocations(BuildContext context) {
-    List<ToggleFieldItem> fields = widget.limits.locations.map((l) {
-      return ToggleFieldItem(
-          label: l.label,
-          value: l.value,
-          selected: currentLocations.contains(l.value),
-          onToggle: toggleLocation);
-    }).toList();
+    List<ToggleFieldItem> fields = List.empty(growable: true);
+
+    widget.limits.locations.where((l) => currentLocations.contains(l.id)).forEach((l) {
+      fields.add(ToggleFieldItem(
+          label: l.name,
+          value: l.id,
+          selected: true,
+          onToggle: toggleLocation));
+    });
+
+    widget.limits.locations.where((l) => !currentLocations.contains(l.id)).forEach((l) {
+      fields.add(ToggleFieldItem(
+          label: l.name,
+          value: l.id,
+          selected: false,
+          onToggle: toggleLocation));
+    });
 
     return MultiSelectFields(items: fields);
   }
@@ -199,10 +202,21 @@ class _SearchFilterModalState extends State<SearchFilterModal> {
                               style: boldTextStyle.copyWith(
                                   fontSize: 20.0, color: primaryTextColor))),
                       Container(
-                        padding: const EdgeInsets.only(top: 10, right: 10),
+                        margin: const EdgeInsets.only(top: 10, right: 10),
                         alignment: Alignment.topLeft,
-                        child: buildLocations(context),
-                      ),
+                        height: 200,
+                        child: 
+                        ScrollConfiguration(
+        behavior: ScrollConfiguration.of(context).copyWith(
+          dragDevices: {
+            PointerDeviceKind.mouse,
+            PointerDeviceKind.touch,
+          },
+        ),
+        child: SingleChildScrollView(
+          physics: const ClampingScrollPhysics(),
+          child: buildLocations(context),
+                      ))),
                     ])),
                 Container(
                   padding: const EdgeInsets.symmetric(vertical: 30.0),
